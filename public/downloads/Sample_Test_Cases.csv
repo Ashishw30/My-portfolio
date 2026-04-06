@@ -1,0 +1,6 @@
+ID,Module,Priority,Status,Title,Steps,Expected,Actual
+TC-0132,Auth,P0,Pass,"Login with valid credentials","Open login page | Enter valid email+password | Click Login","User lands on dashboard; session created","Pass"
+TC-0188,RBAC,P0,Fail,"Viewer cannot access Admin exports","Login as Viewer | Access /admin/exports | Observe behavior","Access denied + redirect","Exports page loads (Defect QA-1024)"
+TC-0241,Payments,P1,Blocked,"Payment retry behavior on server error","Trigger payment | Simulate API error | Click Retry","UI shows error and allows retry","Blocked pending fix for QA-1011"
+TC-0307,Orders,P2,Not Run,"Orders search by partial email","Search by partial email | Verify results","Partial matches appear",""
+

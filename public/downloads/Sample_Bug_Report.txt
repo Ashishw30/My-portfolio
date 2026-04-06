@@ -1,0 +1,34 @@
+SAMPLE BUG REPORT (QA)
+
+Key: QA-1024
+Summary: RBAC: Viewer can access Admin exports via direct URL
+Environment: Web • Chrome 122 • Staging
+Severity: High
+Priority: P0
+Status: Open
+Reported by: QA
+
+PRECONDITIONS
+- Viewer role user exists and is logged in
+
+STEPS TO REPRODUCE
+1) Login as Viewer
+2) Open /admin/exports directly in the address bar
+3) Observe the exports page loads
+
+EXPECTED RESULT
+Access denied (403) and/or redirect to a safe page.
+
+ACTUAL RESULT
+Exports page loads successfully. Download actions are available.
+
+IMPACT
+Unauthorized access to sensitive exports. Potential data leak.
+
+EVIDENCE
+- Repro: 5/5
+- Network: GET /api/admin/exports returns 200
+
+NOTES / TRIAGE
+- Suggest validating authorization on the backend route, not only UI gating.
+

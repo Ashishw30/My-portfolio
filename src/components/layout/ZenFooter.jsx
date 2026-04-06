@@ -10,7 +10,7 @@ export function Footer({ data, navItems, onOpenResume }) {
     },
     {
       name: 'Email',
-      url: 'mailto:ashishwani808@gmail.com',
+      url: 'https://mail.google.com/mail/?view=cm&fs=1&to=ashishwani808@gmail.com',
       icon: <svg width="11" height="11" viewBox="0 0 24 24"><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7l-9 7-9-7v14H1.5c-.85 0-1.5-.65-1.5-1.5v-15c0-1.15.85-1.75 1.75-1.75l1.25.75L12 11l9-7.5 1.25-.75c.9 0 1.75.6 1.75 1.75z" fill="#EA4335" /><path d="M3 7v14h3V9.5l6 4.67L18 9.5V21h3V7l-9 7-9-7z" fill="#FBBC05" /><path d="M21 7v14h1.5c.85 0 1.5-.65 1.5-1.5v-15c0-1.15-.85-1.75-1.75-1.75L21 7z" fill="#34A853" /><path d="M0 4.5v15C0 20.35.65 21 1.5 21H3V7L0 4.5z" fill="#4285F4" /></svg>
     }
   ]

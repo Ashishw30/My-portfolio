@@ -17,7 +17,7 @@ export const portfolioData = {
     },
     ctas: {
       primary: { label: "Explore Portfolio", href: "#projects" },
-      secondary: { label: "Download Resume", href: "/Ashish_Wani_Resume.pdf" },
+      secondary: { label: "Download Resume", href: "/Ashish_Wani_Manual_Tester_QA_3Yrs_Exp.pdf" },
     },
     typingPhrases: [
       "Exploratory System Audits",

@@ -3,6 +3,9 @@ import { Modal } from "../ui/Modal"
 
 export function ResumeSection({ href }) {
   const [open, setOpen] = useState(false)
+  
+  // Cache prevention: append a timestamp to the URL if not already present
+  const resumeUrl = href ? `${href}${href.includes('?') ? '&' : '?'}v=${new Date().getTime()}` : '';
 
   return (
     <div className="flex flex-col gap-6 w-full min-w-0">
@@ -35,7 +38,7 @@ export function ResumeSection({ href }) {
                   👁️ LIVE PREVIEW
                 </button>
                 <a
-                  href={href}
+                  href={resumeUrl}
                   className="flex-1 rounded-xl bg-white/5 border border-white/5 px-6 py-3.5 text-xs font-bold text-white transition-all hover:bg-white/10 hover:border-white/20 flex items-center justify-center gap-2"
                   data-cursor="button"
                 >
@@ -75,7 +78,7 @@ export function ResumeSection({ href }) {
         <div className="rounded-2xl border border-white/5 bg-black/40 p-2 overflow-hidden">
           <iframe
             title="Resume"
-            src={href}
+            src={resumeUrl}
             className="h-[75vh] w-full rounded-xl bg-white/5"
           />
         </div>

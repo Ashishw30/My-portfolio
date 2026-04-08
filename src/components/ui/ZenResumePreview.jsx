@@ -4,7 +4,12 @@ import { useScrollLock } from "../../hooks/useScrollLock"
 export function ResumePreview({ profile, onClose }) {
   // Lock background scroll while the preview is open
   useScrollLock(true)
-  const resumeUrl = "/Ashish_Wani_Resume.pdf.pdf"
+  
+  // Cache prevention: stabilize the URL with useMemo to prevent unnecessary iframe reloads
+  const resumeUrl = React.useMemo(() => {
+    const baseHref = profile?.ctas?.secondary?.href || "/Ashish_Wani_Manual_Tester_QA_3Yrs_Exp.pdf";
+    return `${baseHref}${baseHref.includes('?') ? '&' : '?'}v=${new Date().getTime()}`;
+  }, [profile]);
 
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6 lg:p-16 overflow-hidden animate-in fade-in duration-500">
@@ -24,9 +29,6 @@ export function ResumePreview({ profile, onClose }) {
                  <h3 className="text-[10px] lg:text-lg font-black uppercase tracking-tight text-black truncate max-w-[130px] sm:max-w-none">
                     Ashish_Wani_Resume
                  </h3>
-                 <span className="text-[8px] lg:text-[10px] font-bold text-accent uppercase tracking-[0.2em] opacity-80 mt-0.5 whitespace-nowrap">
-                    Official Document
-                 </span>
               </div>
            </div>
            
@@ -51,12 +53,12 @@ export function ResumePreview({ profile, onClose }) {
 
         {/* Pure Document View Container */}
         <div className="flex-1 overflow-hidden relative group">
-           {/* Interactive Document Iframe */}
-           <iframe 
-             src={`${resumeUrl}#toolbar=1&navpanes=0&scrollbar=1`}
-             className="w-full h-full border-0 animate-in fade-in duration-1000"
-             title="Official Resume Document"
-           ></iframe>
+            {/* Interactive Document Iframe */}
+            <iframe 
+              src={resumeUrl}
+              className="w-full h-full border-0 animate-in fade-in duration-1000"
+              title="Official Resume Document"
+            ></iframe>
 
 
         </div>

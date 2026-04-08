@@ -38,7 +38,10 @@ export function ResumeSection({ href }) {
                   👁️ LIVE PREVIEW
                 </button>
                 <a
-                  href={resumeUrl}
+                  href={href}
+                  download="Ashish_Wani_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex-1 rounded-xl bg-white/5 border border-white/5 px-6 py-3.5 text-xs font-bold text-white transition-all hover:bg-white/10 hover:border-white/20 flex items-center justify-center gap-2"
                   data-cursor="button"
                 >

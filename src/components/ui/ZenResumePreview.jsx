@@ -5,11 +5,12 @@ export function ResumePreview({ profile, onClose }) {
   // Lock background scroll while the preview is open
   useScrollLock(true)
   
+  const baseResumeUrl = profile?.ctas?.secondary?.href || "/Ashish_Wani_Manual_Tester_QA_3Yrs_Exp.pdf";
+  
   // Cache prevention: stabilize the URL with useMemo to prevent unnecessary iframe reloads
-  const resumeUrl = React.useMemo(() => {
-    const baseHref = profile?.ctas?.secondary?.href || "/Ashish_Wani_Manual_Tester_QA_3Yrs_Exp.pdf";
-    return `${baseHref}${baseHref.includes('?') ? '&' : '?'}v=${new Date().getTime()}`;
-  }, [profile]);
+  const resumeUrlWithCache = React.useMemo(() => {
+    return `${baseResumeUrl}${baseResumeUrl.includes('?') ? '&' : '?'}v=${new Date().getTime()}`;
+  }, [baseResumeUrl]);
 
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6 lg:p-16 overflow-hidden animate-in fade-in duration-500">
@@ -34,8 +35,10 @@ export function ResumePreview({ profile, onClose }) {
            
            <div className="flex items-center gap-3 lg:gap-5">
               <a 
-                href={resumeUrl} 
-                download
+                href={baseResumeUrl} 
+                download="Ashish_Wani_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden sm:flex items-center gap-2 px-6 py-2.5 rounded-xl bg-black text-white text-[10px] font-black uppercase tracking-widest hover:bg-accent transition-all shadow-lg"
               >
                  Download PDF
@@ -55,7 +58,7 @@ export function ResumePreview({ profile, onClose }) {
         <div className="flex-1 overflow-hidden relative group">
             {/* Interactive Document Iframe */}
             <iframe 
-              src={resumeUrl}
+              src={resumeUrlWithCache}
               className="w-full h-full border-0 animate-in fade-in duration-1000"
               title="Official Resume Document"
             ></iframe>
@@ -66,8 +69,10 @@ export function ResumePreview({ profile, onClose }) {
         {/* Mobile Action Footer */}
         <div className="block lg:hidden sticky bottom-0 z-40 p-6 bg-white border-t border-border-soft">
            <a 
-              href={resumeUrl} 
-              download
+              href={baseResumeUrl} 
+              download="Ashish_Wani_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-center gap-4 w-full h-14 rounded-2xl bg-black text-white text-[11px] font-black uppercase tracking-[0.2em] shadow-xl"
             >
               Download PDF Resume

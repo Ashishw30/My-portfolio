@@ -18,6 +18,9 @@ export function WorkSamples({ data }) {
               <a
                 key={d.href}
                 href={d.href}
+                download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center justify-between gap-4 rounded-2xl border border-white/5 bg-black/40 px-5 py-4 transition-all hover:bg-white/[0.04] hover:border-[color:var(--accentA)]/30 hover:-translate-y-1 shadow-lg"
                 data-cursor="link"
               >
